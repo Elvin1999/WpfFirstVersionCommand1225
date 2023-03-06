@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp13.Commands;
+using WpfApp13.Models;
 
 namespace WpfApp13
 {
@@ -33,12 +35,31 @@ namespace WpfApp13
         public static readonly DependencyProperty SomeTextProperty =
             DependencyProperty.Register("SomeText", typeof(string), typeof(MainWindow));
 
+
+
+
+
+        public User User
+        {
+            get { return (User)GetValue(UserProperty); }
+            set { SetValue(UserProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for User.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty UserProperty =
+            DependencyProperty.Register("User", typeof(User), typeof(MainWindow));
+
+
+
         public MessageCommand MessageCommand { get; set; }
         public DisplayCommand DisplayTimeCommand { get; set; }
+        public SubmitCommand SubmitCommand { get; set; }
         public MainWindow()
         {
             InitializeComponent();
             SomeText = "Enter Name";
+
+            User = new User();
 
             MessageCommand = new MessageCommand(() =>
             {
@@ -49,6 +70,11 @@ namespace WpfApp13
             DisplayTimeCommand = new DisplayCommand(() =>
             {
                 MessageBox.Show($"Welcome {SomeText} , Now Time is {DateTime.Now}");
+            });
+
+            SubmitCommand = new SubmitCommand(() =>
+            {
+                File.WriteAllText($"{User.Name}.txt",$"{User.Name} {User.Surname}");
             });
 
             this.DataContext = this;

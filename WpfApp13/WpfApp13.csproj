@@ -65,6 +65,8 @@
     </Compile>
     <Compile Include="Commands\DisplayCommand.cs" />
     <Compile Include="Commands\MessageCommand.cs" />
+    <Compile Include="Commands\SubmitCommand.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

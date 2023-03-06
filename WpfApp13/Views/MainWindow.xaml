@@ -22,7 +22,7 @@
             <Button Command="Help" >Click Me For Help 3</Button>
         </StackPanel>-->
         
-        <StackPanel>
+        <!--<StackPanel>
             <TextBox Text="{Binding SomeText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      Name="myTxtBox" FontSize="30"
                      ></TextBox>
@@ -32,6 +32,30 @@
             <Button 
                 Command="{Binding DisplayTimeCommand}"
                 FontSize="35" FontWeight="ExtraBlack">Show Current Time</Button>
+        </StackPanel>-->
+
+
+        <StackPanel>
+            <Label FontSize="30">Name</Label>
+            <TextBox Text="{Binding User.Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                     FontSize="30"
+                     ></TextBox>
+            <Label FontSize="30">Surname</Label>
+            <TextBox Text="{Binding User.Surname,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                 FontSize="30"
+                     ></TextBox>
+            <Label FontSize="30">Age</Label>
+            <TextBox Text="{Binding User.Age,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                   FontSize="30"
+                     ></TextBox>
+            <Label FontSize="30">Score</Label>
+            <TextBox Text="{Binding User.Score,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                   FontSize="30"
+                     ></TextBox>
+            <Button 
+                Command="{Binding SubmitCommand}"
+                FontSize="35" FontWeight="ExtraBlack">Submit</Button>
+            
         </StackPanel>
     </Grid>
 </Window>
